@@ -16,6 +16,9 @@ let main = new Vue({
         onExchange: function() {
             this.isSignUp = !this.isSignUp;
         },
+        toGithub: function() {
+            window.location.href = 'https://github.com/ServiceComputingVanguard';
+        },
     },
     computed: {},
 });

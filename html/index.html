@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Index</title>
+    <link rel="shortcut icon" type="image/png" href="../img/favicon.png"/>
 
-    <!-- Vue Element Library-->
+    <!-- Link Library-->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/element-ui@2.4.11/lib/index.js"></script>
 </head>
@@ -15,13 +16,13 @@
     <div id="main">
         <el-container>
             <el-header>
-                <img src="../img/user.png">
-                <span>MinBlog</span>
+                <img src="../img/favicon.png">
+                <span>Star War</span>
             </el-header>
             <el-main class="sign">
                 <el-card>
-                    <div slot="header">
-                        <span>{{ isSignUp ? "Sign Up" : "Sign In" }}</span>
+                    <div slot="header" class="header">
+                        <img src="../img/background.png">
                     </div>
                     <el-form ref="form" :model="form" label-width="80px">
                         <el-form-item label-width="0">
@@ -40,17 +41,27 @@
                                 <el-input v-model="form.email" placeholder="Email" prefix-icon="iconfont icon-mail"></el-input>
                             </el-form-item>
                         </transition>
-                        <el-form-item class="buttons" label-width="0">
-                            <el-button type="primary" @click="onSubmit">{{ isSignUp ? "Sign Up" : "Sign In" }}</el-button>
-                            <el-button @click="onExchange">{{ isSignUp ? "Sign In" : "Sign Up" }}</el-button>
+                        <el-form-item label-width="0">
+                            <el-button round type="primary" @click="onSubmit">{{ isSignUp ? "Sign Up" : "Sign In" }}</el-button>
+                            <el-button round @click="onExchange">{{ isSignUp ? "Sign In" : "Sign Up" }}</el-button>
+                        </el-form-item>
+                        <el-form-item label-width="0">
+                            <el-button round small type="info" @click="onSubmit">Visitor</el-button>
                         </el-form-item>
                     </el-form>
                 </el-card>
             </el-main>
+            <el-footer>
+                <span>
+                    Copyright © 2018 ServiceComputingVanguard. All rights reserved.
+                    <i class="iconfont icon-github" @click="toGithub"></i>
+                </span>
+            </el-footer>
         </el-container>
     </div>
 </body>
 
+<!-- Personal Library -->
 <link rel="stylesheet" type="text/css" href="../css/index.css">
 <link rel="stylesheet" type="text/css" href="../img/icon/iconfont.css">
 <script src="../js/index.js"></script>
