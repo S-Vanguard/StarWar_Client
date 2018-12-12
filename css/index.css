@@ -1,0 +1,45 @@
+@import url("https://unpkg.com/element-ui@2.4.11/lib/theme-chalk/index.css");
+.el-header {
+background-color: #B3C0D1;
+color: #333;
+text-align: center;
+line-height: 60px;
+}
+
+.el-header > img {
+    width: 20px;
+}
+
+.el-main {
+background-color: #E9EEF3;
+color: #333;
+text-align: center;
+line-height: 160px;
+}
+
+.sign {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.slide-fade-enter-active{
+    -webkit-transition: all .2s ease !important;
+    transition: all .2s ease !important;
+}
+
+.slide-fade-leave-active{
+    -webkit-transition: all .2s ease !important;
+    transition: all .2s ease !important;
+}
+.slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active for below version 2.1.8 */ {
+    transform: scaleY(0) !important;
+    margin: 0 !important;
+    max-height: 0;
+    background-color: black;
+}
+
+.icon {
+    width: 10px;
+}
