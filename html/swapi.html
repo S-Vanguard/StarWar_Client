@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SWAPI</title>
+    <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+
+    <!-- Link Library-->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.4.11/lib/index.js"></script>
+</head>
+<body>
+    <div id="api">
+        <el-container>
+            <el-main class="search">
+                <el-card>
+                    <div slot="header" class="header">
+                        <img src="../img/background.png">
+                    </div>
+                    <el-input placeholder="请输入内容" v-model="input">
+                        <!-- <template slot="prepend">Http://</template> -->
+                        <el-select v-model="select" slot="prepend" placeholder="请选择">
+                            <el-option
+                                v-for="item in apiOptions"
+                                :key="item.value"
+                                :value="item.value"
+                                :label="item.label">
+                            </el-option>
+                        </el-select>
+                        <el-button slot="append" icon="el-icon-search"></el-button>
+                    </el-input>
+                </el-card>
+            </el-main>
+            <el-footer>
+                <span>
+                    Copyright © 2018 ServiceComputingVanguard. All rights reserved.
+                    <i class="iconfont icon-github" @click="toGithub"></i>
+                </span>
+            </el-footer>
+        </el-container>
+    </div>
+</body>
+
+<!-- Personal Library -->
+<link rel="stylesheet" type="text/css" href="../css/swapi.css">
+<link rel="stylesheet" type="text/css" href="../img/icon/iconfont.css">
+<script src="../js/swapi.js"></script>
+</html>
