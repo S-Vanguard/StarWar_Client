@@ -1,14 +1,21 @@
 @import url("https://unpkg.com/element-ui@2.4.11/lib/theme-chalk/index.css");
+body {
+    margin: 0;
+    background-size: cover;
+    background-image: url(../img/bgimage.jpg);
+}
+
 .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
+    background-color: #ffffff33;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px #000000;
     text-align: center;
     line-height: 60px;
 }
 
 .el-footer {
     height: 63px !important;
-    width: calc(100% - 15px);
+    width: 100%;
     position: absolute;
     bottom: 0;
     font-size: 10px;

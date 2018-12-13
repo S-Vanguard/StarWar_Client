@@ -12,6 +12,8 @@ let main = new Vue({
     methods: {
         onSubmit: function() {
             console.log('Sign In');
+            console.log(this.form.username)
+            console.log(this.form.password)
         },
         onExchange: function() {
             this.isSignUp = !this.isSignUp;
