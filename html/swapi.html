@@ -14,23 +14,31 @@
 <body>
     <div id="api">
         <el-container>
+            <el-header>
+                <el-row :gutter="20" type="flex" justify="space-between" align="center">
+                    <el-col :span="3">
+                        <img class="header" src="../img/background.png">
+                    </el-col>
+                    <el-col :span="3">
+                        <p v-if="username == ''">
+                            <el-button round type="primary" @click="toIndex">Sign Up</el-button>
+                        </p>
+                        <p v-else>
+                            Welcome, <span class="user">{{ username }}</span>        
+                        </p>
+                    </el-col>
+                </el-row>
+            </el-header>
             <el-main class="search">
+                <el-input placeholder="请输入内容" v-model="input">
+                    <template slot="prepend">Http://</template>
+                    <el-button slot="append" icon="el-icon-search"></el-button>
+                </el-input>
                 <el-card>
-                    <div slot="header" class="header">
-                        <img src="../img/background.png">
-                    </div>
-                    <el-input placeholder="请输入内容" v-model="input">
-                        <!-- <template slot="prepend">Http://</template> -->
-                        <el-select v-model="select" slot="prepend" placeholder="请选择">
-                            <el-option
-                                v-for="item in apiOptions"
-                                :key="item.value"
-                                :value="item.value"
-                                :label="item.label">
-                            </el-option>
-                        </el-select>
-                        <el-button slot="append" icon="el-icon-search"></el-button>
-                    </el-input>
+                    <el-tabs :tab-position="tabPosition" style="height: 200px;">
+                        <el-tab-pane label="JSON">用户管理</el-tab-pane>
+                        <el-tab-pane label="SCHEMA">配置管理</el-tab-pane>
+                    </el-tabs>
                 </el-card>
             </el-main>
             <el-footer>

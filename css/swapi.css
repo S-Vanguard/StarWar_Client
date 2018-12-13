@@ -6,6 +6,19 @@ text-align: center;
 line-height: 60px;
 }
 
+.el-header .el-row {
+    width: 100%;
+}
+
+.el-header p {
+    margin: 0 auto;
+}
+
+.el-header img {
+    max-width: 80px;
+    margin-top: 10px;
+}
+
 .el-footer {
     height: 63px !important;
     width: calc(100% - 15px);
@@ -25,24 +38,15 @@ line-height: 60px;
     transform: scale(1.1, 1.1);
 }
 
-.el-header > img {
-    width: 20px;
-}
-
 .el-main {
-background-color: #E9EEF3;
-color: #333;
-text-align: center;
-line-height: 160px;
-}
-
-.header {
-    max-height: 100px;
-}
-
-.el-card .header > img {
-    max-width: 200px;
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 100px;
+    width: 900px;
     margin: 0 auto;
+    margin-top: 50px;
+    padding-top: 0;
 }
 
 .icon {

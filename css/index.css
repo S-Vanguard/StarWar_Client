@@ -1,9 +1,19 @@
 @import url("https://unpkg.com/element-ui@2.4.11/lib/theme-chalk/index.css");
 .el-header, .el-footer {
-background-color: #B3C0D1;
-color: #333;
-text-align: center;
-line-height: 60px;
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+}
+
+.el-header > img {
+    width: 20px;
+}
+
+.el-header > span {
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+                "Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-size: 24px;
 }
 
 .el-footer {
@@ -25,15 +35,11 @@ line-height: 60px;
     transform: scale(1.1, 1.1);
 }
 
-.el-header > img {
-    width: 20px;
-}
-
 .el-main {
-background-color: #E9EEF3;
-color: #333;
-text-align: center;
-line-height: 160px;
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
 }
 
 .sign {
@@ -51,6 +57,10 @@ line-height: 160px;
     margin: 0 auto;
 }
 
+.el-card__body {
+    padding-bottom: 0;
+}
+
 .slide-fade-enter-active{
     -webkit-transition: all .2s ease !important;
     transition: all .2s ease !important;
@@ -66,6 +76,14 @@ line-height: 160px;
     margin: 0 !important;
     max-height: 0;
     background-color: black;
+}
+
+.el-button {
+    width: 47.5%;
+}
+
+.visitor {
+    width: 100%;
 }
 
 .icon {

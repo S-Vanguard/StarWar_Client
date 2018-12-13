@@ -16,8 +16,8 @@
     <div id="main">
         <el-container>
             <el-header>
-                <img src="../img/favicon.png">
-                <span>Star War</span>
+                <!-- <img src="../img/favicon.png"> -->
+                <span class="title">Star Wars API</span>
             </el-header>
             <el-main class="sign">
                 <el-card>
@@ -26,7 +26,7 @@
                     </div>
                     <el-form ref="form" :model="form" label-width="80px">
                         <el-form-item label-width="0">
-                            <el-input v-model="form.name" placeholder="Username" prefix-icon="iconfont icon-user"></el-input>
+                            <el-input v-model="form.username" placeholder="Username" prefix-icon="iconfont icon-user"></el-input>
                         </el-form-item>
                         <el-form-item label-width="0">
                             <el-input v-model="form.password" placeholder="Password" prefix-icon="iconfont icon-password"></el-input>
@@ -46,7 +46,7 @@
                             <el-button round @click="onExchange">{{ isSignUp ? "Sign In" : "Sign Up" }}</el-button>
                         </el-form-item>
                         <el-form-item label-width="0">
-                            <el-button round small type="info" @click="onSubmit">Visitor</el-button>
+                            <el-button round class="visitor" type="info" @click="toVisitor">Visitor</el-button>
                         </el-form-item>
                     </el-form>
                 </el-card>

@@ -16,6 +16,9 @@ let main = new Vue({
         onExchange: function() {
             this.isSignUp = !this.isSignUp;
         },
+        toVisitor: function() {
+            window.location.href = './swapi.html';
+        },
         toGithub: function() {
             window.location.href = 'https://github.com/ServiceComputingVanguard';
         },
