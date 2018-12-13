@@ -69,6 +69,37 @@
     }
     ```
 
+## /get_current_user
+
+- 请求类型：**GET**
+- 功能简介：
+  
+  获取当前登录用户，若无用户登陆，则返回错误信息
+
+- 数据字段：
+
+  **无**
+
+- 响应示例：
+
+  - 成功获取的响应信息：
+
+    ```json
+    {
+      "status": "OK",
+      "username": "User1"
+    }
+    ```
+
+  - 获取失败的响应信息：
+
+    ```json
+    {
+      "status": "Failed",
+      "message": "You've not signed in yet"
+    }
+    ```
+
 ## /sign_out
 
 - 请求类型：**GET**
