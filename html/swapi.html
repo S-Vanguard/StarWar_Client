@@ -17,15 +17,15 @@
         <el-container>
             <el-header>
                 <el-row :gutter="20" type="flex" justify="space-between" align="center">
-                    <el-col :span="3">
-                        <img class="header" src="../img/background.png">
+                    <el-col :span="2">
+                        <img class="header" src="../img/logo.png">
                     </el-col>
                     <el-col :span="3">
                         <p v-if="username == ''">
                             <el-button round type="primary" @click="toIndex">Sign Up</el-button>
                         </p>
                         <p v-else>
-                            Welcome, <span class="user">{{ username }}</span>        
+                            Welcome, <span class="user" @click="toProfile">{{ username }}</span>        
                         </p>
                     </el-col>
                 </el-row>
@@ -42,12 +42,7 @@
                     </el-tabs>
                 </el-card>
             </el-main>
-            <el-footer>
-                <span>
-                    Copyright © 2018 ServiceComputingVanguard. All rights reserved.
-                    <i class="iconfont icon-github" @click="toGithub"></i>
-                </span>
-            </el-footer>
+            <my-footer></my-footer>
         </el-container>
     </div>
 </body>
@@ -56,5 +51,6 @@
 <link rel="stylesheet" type="text/css" href="../css/global.css">
 <link rel="stylesheet" type="text/css" href="../css/swapi.css">
 <link rel="stylesheet" type="text/css" href="../img/icon/iconfont.css">
+<script src="../js/global.js"></script>
 <script src="../js/swapi.js"></script>
 </html>

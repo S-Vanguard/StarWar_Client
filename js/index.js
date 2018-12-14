@@ -50,9 +50,6 @@ let main = new Vue({
         toVisitor: function() {
             window.location.href = './swapi.html';
         },
-        toGithub: function() {
-            window.location.href = 'https://github.com/ServiceComputingVanguard';
-        },
         check: function() {
             if (this.form.username === "") {
                 return "用户名不能为空";

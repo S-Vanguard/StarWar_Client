@@ -15,11 +15,8 @@
 
 <body>
     <div id="main">
-        <el-container>
-            <el-header>
-                <!-- <img src="../img/favicon.png"> -->
-                <span class="title">Star Wars API</span>
-            </el-header>
+        <el-container class="is-vertical">
+            <my-header></my-header>
             <el-main class="sign">
                 <el-card>
                     <div slot="header" class="header">
@@ -30,11 +27,11 @@
                             <el-input v-model="form.username" placeholder="Username" prefix-icon="iconfont icon-user"></el-input>
                         </el-form-item>
                         <el-form-item label-width="0">
-                            <el-input v-model="form.password" placeholder="Password" prefix-icon="iconfont icon-password"></el-input>
+                            <el-input type="password" v-model="form.password" placeholder="Password" prefix-icon="iconfont icon-confirm-psd"></el-input>
                         </el-form-item>
                         <transition name="slide-fade">
                             <el-form-item id="test" v-show="isSignUp" label-width="0">
-                                <el-input v-model="form.confirmPsd" placeholder="Confirm Password" prefix-icon="iconfont icon-confirm-psd"></el-input>
+                                <el-input type="password" v-model="form.confirmPsd" placeholder="Confirm Password" prefix-icon="iconfont icon-password"></el-input>
                             </el-form-item>
                         </transition>
                         <transition name="slide-fade">
@@ -52,12 +49,7 @@
                     </el-form>
                 </el-card>
             </el-main>
-            <el-footer>
-                <span>
-                    Copyright © 2018 ServiceComputingVanguard. All rights reserved.
-                    <i class="iconfont icon-github" @click="toGithub"></i>
-                </span>
-            </el-footer>
+            <my-footer></my-footer>
         </el-container>
     </div>
 </body>
@@ -66,5 +58,6 @@
 <link rel="stylesheet" type="text/css" href="../css/global.css">
 <link rel="stylesheet" type="text/css" href="../css/index.css">
 <link rel="stylesheet" type="text/css" href="../img/icon/iconfont.css">
+<script src="../js/global.js"></script>
 <script src="../js/index.js"></script>
 </html>
