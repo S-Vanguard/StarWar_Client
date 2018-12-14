@@ -2,7 +2,7 @@
 
 本文档描述了后端需要实现的，除了基础 API 之外的 API。
 
-## /user_sign_up
+## /user/signUp
 
 - 请求类型：**POST**
 - 功能简介：
@@ -36,7 +36,7 @@
     }
     ```
 
-## /user_sign_in
+## /user/signIn
 
 - 请求类型：**POST**
 - 功能简介：
@@ -69,12 +69,12 @@
     }
     ```
 
-## /user_update
+## /user/update
 
 - 请求类型：**POST**
 - 功能简介：
 
-  更新用户信息，并返回确认信息。若不存在该用户，则返回错误信息。
+  更新用户信息，并返回确认信息。若不存在该用户，则返回错误信息。**新密码为空则不更新密码，邮箱同理。**
 
 - 数据字段：
 
@@ -85,7 +85,26 @@
   |password|用户的新密码|
   |email|用户的新邮箱|
 
-## /user_get
+- 响应示例：
+
+  - 注册成功的响应信息：
+
+    ```json
+    {
+      "status": "OK"
+    }
+    ```
+  
+  - 注册失败的响应信息：
+
+    ```json
+    {
+      "status": "Failed",
+      "message": "Invalid password."
+    }
+    ```
+
+## /user/get
 
 - 请求类型：**GET**
 - 功能简介：
@@ -103,7 +122,8 @@
     ```json
     {
       "status": "OK",
-      "username": "User1"
+      "username": "User1",
+      "email": "1179830039@qq.com"
     }
     ```
 
@@ -116,7 +136,7 @@
     }
     ```
 
-## /user_logout
+## /user/logout
 
 - 请求类型：**GET**
 - 功能简介：
