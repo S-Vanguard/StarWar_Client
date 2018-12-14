@@ -1,3 +1,4 @@
+const emailReg = re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 let main = new Vue({
     el: '#main',
     data: {
@@ -56,14 +57,14 @@ let main = new Vue({
             if (this.form.username === "") {
                 return "用户名不能为空";
             }
-            if (this.form.password === "") {
-                return "密码不能为空";
+            if (this.form.password.length < 8) {
+                return "密码不能少于8位";
             }
             if (this.isSignUp && this.form.password !== this.form.confirmPsd) {
                 return "两次输入的密码不一致";
             }
-            if (this.isSignUp && this.form.email === "") {
-                return "邮箱不能为空";
+            if (this.isSignUp && !emailReg.test(this.form.email)) {
+                return "邮箱格式错误";
             }
             return "";
         }
