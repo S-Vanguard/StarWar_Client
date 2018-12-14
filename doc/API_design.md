@@ -122,7 +122,8 @@
     ```json
     {
       "status": "OK",
-      "username": "User1"
+      "username": "User1",
+      "email": "1179830039@qq.com"
     }
     ```
 
