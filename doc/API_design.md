@@ -2,7 +2,7 @@
 
 本文档描述了后端需要实现的，除了基础 API 之外的 API。
 
-## /user_sign_up
+## /user/signUp
 
 - 请求类型：**POST**
 - 功能简介：
@@ -36,7 +36,7 @@
     }
     ```
 
-## /user_sign_in
+## /user/signIn
 
 - 请求类型：**POST**
 - 功能简介：
@@ -69,7 +69,7 @@
     }
     ```
 
-## /user_update
+## /user/update
 
 - 请求类型：**POST**
 - 功能简介：
@@ -104,7 +104,7 @@
     }
     ```
 
-## /user_get
+## /user/get
 
 - 请求类型：**GET**
 - 功能简介：
@@ -136,7 +136,7 @@
     }
     ```
 
-## /user_logout
+## /user/logout
 
 - 请求类型：**GET**
 - 功能简介：
