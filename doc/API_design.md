@@ -85,6 +85,25 @@
   |password|用户的新密码|
   |email|用户的新邮箱|
 
+- 响应示例：
+
+  - 注册成功的响应信息：
+
+    ```json
+    {
+      "status": "OK"
+    }
+    ```
+  
+  - 注册失败的响应信息：
+
+    ```json
+    {
+      "status": "Failed",
+      "message": "Invalid password."
+    }
+    ```
+
 ## /user_get
 
 - 请求类型：**GET**
