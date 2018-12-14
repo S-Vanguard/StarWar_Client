@@ -20,8 +20,8 @@ let api = new Vue({
         toIndex: function() {
             window.location.href = './index.html';
         },
-        toGithub: function() {
-            window.location.href = 'https://github.com/ServiceComputingVanguard';
+        toProfile: function() {
+            window.location.href = './profile.html';
         },
     },
     computed: {},
