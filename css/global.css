@@ -11,6 +11,10 @@ body > div {
     padding-bottom: 63px;
 }
 
+body > .el-message {
+    min-height: 0;
+}
+
 body {
     margin: 0;
     background-image: url(../img/bgimage.jpg);

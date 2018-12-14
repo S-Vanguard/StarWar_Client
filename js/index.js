@@ -18,29 +18,49 @@ let main = new Vue({
                 return;
             }
             if (this.isSignUp === true) {
-                axios.post('/sign_up', {
+                axios.post('/user/signUp', {
                     username: this.form.username,
                     password: this.form.password,
                     email: this.form.email
                 })
                 .then(function (response) {
-                    console.log(response);
+                    if (response.data.status === "OK") {
+                        this.$message.success("Signed up successfully");
+                        this.isSignUp = false;
+                    } else {
+                        if (response.data.message !== undefined) {
+                            this.$message.error(response.data.message);
+                        } else {
+                            this.$message.error('Unknown error');
+                        }
+                    }
                 })
                 .catch(function (error) {
-                    this.$message.error('连接失败：服务器无响应');
+                    this.$message.error('Connection failed: server does not response');
+                    console.log(error)
                 });
             }
             else {
-                axios.post('/sign_up', {
+                axios.post('/user/signIn', {
                     username: this.form.username,
-                    password: this.form.password,
-                    email: this.form.email
+                    password: this.form.password
                 })
                 .then(function (response) {
-                    console.log(response);
+                    if (response.data.status === "OK") {
+                        this.$message.success("Signed in successfully");
+                        setTimeout(()=>{
+                            window.location.href = "/public/html/swapi.html";
+                        }, 3000)
+                    } else {
+                        if (response.data.message !== undefined) {
+                            this.$message.error(response.data.message);
+                        } else {
+                            this.$message.error('Unknown error');
+                        }
+                    }
                 })
                 .catch(function (error) {
-                    this.$message.error('连接失败：服务器无响应');
+                    this.$message.error('Connection failed: server does not response');
                 });
             }
         },
@@ -48,20 +68,20 @@ let main = new Vue({
             this.isSignUp = !this.isSignUp;
         },
         toVisitor: function() {
-            window.location.href = './swapi.html';
+            window.location.href = '/public/html/swapi.html';
         },
         check: function() {
             if (this.form.username === "") {
-                return "用户名不能为空";
+                return "Username cannot stay empty";
             }
             if (this.form.password.length < 8) {
-                return "密码不能少于8位";
+                return "Length of password cannot be less than 8 characters";
             }
             if (this.isSignUp && this.form.password !== this.form.confirmPsd) {
-                return "两次输入的密码不一致";
+                return "Password mismatch";
             }
             if (this.isSignUp && !emailReg.test(this.form.email)) {
-                return "邮箱格式错误";
+                return "Invalid email format";
             }
             return "";
         }
