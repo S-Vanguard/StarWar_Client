@@ -58,8 +58,14 @@ let api = new Vue({
                         vueInstance.$success('Done')
                     })
                     .catch(function (error) {
-                        vueInstance.$message.error('Connection failed: ' + error.response.statusText);
-                        vueInstance.jsonSource = 'Error ' + error.response.status;
+                        if (error.response) {
+                            vueInstance.$message.error('Connection failed: ' + error.response.statusText);
+                            vueInstance.jsonSource = 'Error ' + error.response.status;
+                        }
+                        else {
+                            vueInstance.$message.error('Connection failed: Unknown error');
+                            vueInstance.jsonSource = 'Unknown Error';
+                        }
                         vueInstance.isJSONParsed = false;
                         vueInstance.parsingErrorMsg = 'No valid JSON to parse.'
                         console.log(error);
