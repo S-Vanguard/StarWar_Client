@@ -15,6 +15,12 @@ let api = new Vue({
         tabPosition: 'left',
     },
     methods: {
+        handleTabSwitch: function(tab, event) {
+            if (tab.name === 'schema' && this.username === '') {
+                this.$message.warning('This function is only available for registered users');
+                this.parsingErrorMsg = "Login to view the parsed JSON."
+            }
+        },
         toIndex: function() {
             window.location.href = 'index.html';
         },
@@ -42,13 +48,14 @@ let api = new Vue({
                             vueInstance.parsingErrorMsg = 'Parsing...'
                             vueInstance.parseJSON();
                             vueInstance.isJSONParsed = true;
-                            vueInstance.$success('Done')
                         }
                         else {
                             vueInstance.$message.warning('Login to view the parsed JSON')
                             vueInstance.isJSONParsed = false;
                             vueInstance.parsingErrorMsg = 'Login to view the parsed JSON.';
                         }
+
+                        vueInstance.$success('Done')
                     })
                     .catch(function (error) {
                         vueInstance.$message.error('Connection failed: ' + error.response.statusText);
