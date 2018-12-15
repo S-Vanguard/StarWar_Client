@@ -35,7 +35,7 @@ let api = new Vue({
                         }
 
                         vueInstance.jsonSource = JSON.stringify(response.data, null, 4).replace(/https:\/\/swapi.co\/api/g, 'http://' + window.location.host)
-                        if (username !== '') {
+                        if (vueInstance.username !== '') {
                             vueInstance.$message('Please wait, parsing JSON...')
                             vueInstance.isJSONParsed = false;
                             vueInstance.parsingErrorMsg = 'Parsing...'
