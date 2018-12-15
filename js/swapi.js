@@ -11,16 +11,6 @@ let api = new Vue({
         parsedJSONTable : [],
         parsingErrorMsg : 'No valid JSON to parse.',
         apiType : 0, // 0 for invalid, 1 for people, 2 for planets, 3 for starships
-        apiOptions: [{
-            value: '1',
-            label: 'Person'
-        }, {
-            value: '2',
-            label: 'Vehicle'
-        }, {
-            value: '3',
-            label: 'Planet'
-        }],
         tabPosition: 'left',
     },
     methods: {
@@ -33,38 +23,39 @@ let api = new Vue({
         onSearch: function() {
             if (this.loadingJSON === false) {
                 this.loadingJSON = true;
+                let vueInstance = this;
                 axios.get('/' + this.input)
                     .then(function (response) {
                         if (response.status != 200) {
-                            this.$message.error('Server error: ' + response.statusText);
-                            this.jsonSource = 'Error'
-                            this.isJSONParsed = false;
-                            this.parsingErrorMsg = 'No valid JSON to parse.'
+                            vueInstance.$message.error('Server error: ' + response.statusText);
+                            vueInstance.jsonSource = 'Error'
+                            vueInstance.isJSONParsed = false;
+                            vueInstance.parsingErrorMsg = 'No valid JSON to parse.'
                             return;
                         }
 
-                        this.jsonSource = JSON.stringify(response.data, null, 4)
+                        vueInstance.jsonSource = JSON.stringify(response.data, null, 4).replace(/https:\/\/swapi.co\/api/g, 'http://' + window.location.host)
                         if (username !== '') {
-                            this.$message('Please wait, parsing JSON...')
-                            this.isJSONParsed = false;
-                            this.parsingErrorMsg = 'Parsing...'
+                            vueInstance.$message('Please wait, parsing JSON...')
+                            vueInstance.isJSONParsed = false;
+                            vueInstance.parsingErrorMsg = 'Parsing...'
                             parseJSON();
-                            this.isJSONParsed = true;
+                            vueInstance.isJSONParsed = true;
                         }
                         else {
-                            this.$message.warning('Login to view the parsed JSON')
-                            this.isJSONParsed = false;
-                            this.parsingErrorMsg = 'Login to view the parsed JSON.';
+                            vueInstance.$message.warning('Login to view the parsed JSON')
+                            vueInstance.isJSONParsed = false;
+                            vueInstance.parsingErrorMsg = 'Login to view the parsed JSON.';
                         }
                     })
                     .catch(function (error) {
-                        this.$message.error('Connection failed: server does not response');
-                        this.jsonSource = 'Error'
-                        this.isJSONParsed = false;
-                        this.parsingErrorMsg = 'No valid JSON to parse.'
+                        vueInstance.$message.error('Connection failed: server does not response');
+                        vueInstance.jsonSource = 'Error'
+                        vueInstance.isJSONParsed = false;
+                        vueInstance.parsingErrorMsg = 'No valid JSON to parse.'
                     })
                     .then(function() {
-                        this.loadingJSON = false;
+                        vueInstance.loadingJSON = false;
                     });
             }
         },
@@ -85,15 +76,21 @@ let api = new Vue({
             }
             if (jsonSource.count != undefined) {
                 // Parse Page of Objects //
-                this.parsedJSONTable = jsonSource.results;
+                this.parsedJSONTable = JSON.parse(jsonSource).results;
             }
             else {
-                this.parsedJSONTable = [jsonSource];
+                this.parsedJSONTable = [JSON.parse(jsonSource)];
             }
         }
     },
-    computed: { },
+    computed: {
+        currentHost: function () {
+            return "http://" + window.location.host + '/';
+        }
+     },
     mounted: function () {
+        // Waiting for account module //
+
         // axios.post('/user/get', {})
         //     .then(function (response) {
         //         if (response.data.status === 'OK' && response.data.username !== undefined) {
@@ -116,6 +113,7 @@ let api = new Vue({
         //     })
 
         // test module //
+
         this.$message.success('Welcome, visitor');
         this.username = '';
         this.loadingUser = false;
