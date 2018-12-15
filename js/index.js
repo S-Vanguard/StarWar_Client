@@ -37,8 +37,13 @@ let main = new Vue({
                     }
                 })
                 .catch(function (error) {
-                    vueInstance.$message.error('Connection failed: server does not response');
-                    console.log(error)
+                    if (error.response) {
+                        vueInstance.$message.error('Connection failed: ' + error.response.statusText);
+                    }
+                    else {
+                        vueInstance.$message.error('Connection failed: unknown error');
+                    }
+                    console.log(error);
                 });
             }
             else {
