@@ -22,12 +22,12 @@
                     <el-col :span="2">
                         <img class="header" src="../img/logo.png">
                     </el-col>
-                    <el-col :span="3">
+                    <el-col :span="3" style="width: auto;" >
                         <p v-if="username === ''">
                             <el-button round type="primary" @click="toIndex">Sign Up</el-button>
                         </p>
                         <p v-else>
-                            Welcome, <span class="user" @click="toProfile">{{ username }}</span>
+                            Welcome, <span class="user" @click="toProfile" style="margin-left: 5px; font-size: 22px; cursor: pointer;">{{ username }}</span>
                         </p>
                     </el-col>
                 </el-row>
