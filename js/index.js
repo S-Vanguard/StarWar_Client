@@ -17,7 +17,7 @@ let main = new Vue({
                 this.$message.error(errorMessage);
                 return;
             }
-            vueInstance = this;
+            let vueInstance = this;
             if (this.isSignUp === true) {
                 axios.post('/user/signUp', {
                     username: vueInstance.form.username,

@@ -106,21 +106,21 @@ let api = new Vue({
      },
     mounted: function () {
         // Waiting for account module //
-
+        let vueInstance = this;
         axios.post('/user/get', {})
             .then(function (response) {
                 if (response.data.status === 'OK' && response.data.username !== undefined) {
-                    this.$message.success('Welcome, ' + response.data.username);
-                    this.username = response.data.username;
-                    this.loadingUser = false;
+                    vueInstance.$message.success('Welcome, ' + response.data.username);
+                    vueInstance.username = response.data.username;
+                    vueInstance.loadingUser = false;
                 }
                 else if (response.data.status === "Failed" && response.data.message !== undefined) {
-                    this.$message.success('Welcome, visitor');
-                    this.username = '';
-                    this.loadingUser = false;
+                    vueInstance.$message.success('Welcome, visitor');
+                    vueInstance.username = '';
+                    vueInstance.loadingUser = false;
                 }
                 else {
-                    this.$message.error('Unknown error, try refreshing this page');
+                    vueInstance.$message.error('Unknown error, try refreshing this page');
                 }
             })
             .catch(function (error) {
@@ -130,7 +130,7 @@ let api = new Vue({
                 else {
                     vueInstance.$message.error('Connection failed: Unknown error');
                 }
-                this.username = '';
+                vueInstance.username = '';
                 console.log(error)
             });
 
