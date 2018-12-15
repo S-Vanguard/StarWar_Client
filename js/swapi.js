@@ -107,31 +107,37 @@ let api = new Vue({
     mounted: function () {
         // Waiting for account module //
 
-        // axios.post('/user/get', {})
-        //     .then(function (response) {
-        //         if (response.data.status === 'OK' && response.data.username !== undefined) {
-        //             this.$message.success('Welcome, ' + response.data.username);
-        //             this.username = response.data.username;
-        //             loadingUser = false;
-        //         }
-        //         else if (response.data.status === "Failed" && response.data.message !== undefined) {
-        //             this.$message.success('Welcome, visitor');
-        //             this.username = '';
-        //             loadingUser = false;
-        //         }
-        //         else {
-        //             this.$message.error('Unknown error, try refreshing this page');
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         this.$message.error('Connection failed: server does not response');
-        //         console.log(error)
-        //     })
+        axios.post('/user/get', {})
+            .then(function (response) {
+                if (response.data.status === 'OK' && response.data.username !== undefined) {
+                    this.$message.success('Welcome, ' + response.data.username);
+                    this.username = response.data.username;
+                    this.loadingUser = false;
+                }
+                else if (response.data.status === "Failed" && response.data.message !== undefined) {
+                    this.$message.success('Welcome, visitor');
+                    this.username = '';
+                    this.loadingUser = false;
+                }
+                else {
+                    this.$message.error('Unknown error, try refreshing this page');
+                }
+            })
+            .catch(function (error) {
+                if (error.response) {
+                    vueInstance.$message.error('Connection failed: ' + error.response.statusText);
+                }
+                else {
+                    vueInstance.$message.error('Connection failed: Unknown error');
+                }
+                this.username = '';
+                console.log(error)
+            });
 
-        // test module //
+        // // test module //
 
-        this.$message.success('Welcome, visitor');
-        this.username = '';
-        this.loadingUser = false;
+        // this.$message.success('Welcome, visitor');
+        // this.username = '';
+        // this.loadingUser = false;
     }
 });
