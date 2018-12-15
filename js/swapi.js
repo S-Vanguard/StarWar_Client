@@ -55,7 +55,7 @@ let api = new Vue({
                             vueInstance.parsingErrorMsg = 'Login to view the parsed JSON.';
                         }
 
-                        vueInstance.$success('Done')
+                        vueInstance.$message.success('Done')
                     })
                     .catch(function (error) {
                         if (error.response) {
