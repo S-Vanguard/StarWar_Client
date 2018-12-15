@@ -4,6 +4,7 @@ let api = new Vue({
         username: '',
         input: '',
         select: '',
+        selectedTab: 'json',
         jsonSource: 'You\'ve not request any API.',
         isJSONParsed: false,
         loadingJSON: false,
@@ -23,6 +24,7 @@ let api = new Vue({
         onSearch: function() {
             if (this.loadingJSON === false) {
                 this.loadingJSON = true;
+                this.selectedTab = 'json';
                 let vueInstance = this;
                 axios.get('/' + this.input)
                     .then(function (response) {
@@ -36,11 +38,11 @@ let api = new Vue({
 
                         vueInstance.jsonSource = JSON.stringify(response.data, null, 4).replace(/https:\/\/swapi.co\/api/g, 'http://' + window.location.host)
                         if (vueInstance.username !== '') {
-                            vueInstance.$message('Please wait, parsing JSON...')
                             vueInstance.isJSONParsed = false;
                             vueInstance.parsingErrorMsg = 'Parsing...'
-                            parseJSON();
+                            vueInstance.parseJSON();
                             vueInstance.isJSONParsed = true;
+                            vueInstance.$success('Done')
                         }
                         else {
                             vueInstance.$message.warning('Login to view the parsed JSON')
@@ -49,10 +51,11 @@ let api = new Vue({
                         }
                     })
                     .catch(function (error) {
-                        vueInstance.$message.error('Connection failed: server does not response');
-                        vueInstance.jsonSource = 'Error'
+                        vueInstance.$message.error('Connection failed: ' + error.response.statusText);
+                        vueInstance.jsonSource = 'Error ' + error.response.status;
                         vueInstance.isJSONParsed = false;
                         vueInstance.parsingErrorMsg = 'No valid JSON to parse.'
+                        console.log(error);
                     })
                     .then(function() {
                         vueInstance.loadingJSON = false;
@@ -74,12 +77,12 @@ let api = new Vue({
                 default:
                     this.apiType = 0;
             }
-            if (jsonSource.count != undefined) {
+            if (this.jsonSource.count != undefined) {
                 // Parse Page of Objects //
-                this.parsedJSONTable = JSON.parse(jsonSource).results;
+                this.parsedJSONTable = JSON.parse(this.jsonSource).results;
             }
             else {
-                this.parsedJSONTable = [JSON.parse(jsonSource)];
+                this.parsedJSONTable = [JSON.parse(this.jsonSource)];
             }
         }
     },

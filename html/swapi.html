@@ -38,11 +38,11 @@
                     <el-button slot="append" icon="el-icon-search" @click="onSearch"></el-button>
                 </el-input>
                 <el-card v-loading="loadingJSON">
-                    <el-tabs :tab-position="tabPosition" style="min-height: 200px;">
-                        <el-tab-pane label="JSON">
+                    <el-tabs :tab-position="tabPosition" style="min-height: 200px;" v-model="selectedTab">
+                        <el-tab-pane label="JSON" name="json">
                             <el-input type="textarea" disabled autosize placeholder="请输入内容" v-model="jsonSource" style="min-height: 150px;"></el-input>
                         </el-tab-pane>
-                        <el-tab-pane label="SCHEMA">
+                        <el-tab-pane label="SCHEMA" name="schema">
                             <span v-if="isJSONParsed === false || apiType === 0" style="color: #eeeeee;text-shadow: 1px 1px 1px gray;">{{ parsingErrorMsg }}</span>
                             <el-table v-else :data="parsedJSONTable" style="width: 100%">
                                 <el-table-column v-if="apiType === 1" type="expand">
