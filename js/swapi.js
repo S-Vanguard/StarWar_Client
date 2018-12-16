@@ -107,7 +107,7 @@ let api = new Vue({
     mounted: function () {
         // Waiting for account module //
         let vueInstance = this;
-        axios.post('/user/get', {})
+        axios.get('/user/get')
             .then(function (response) {
                 if (response.data.status === 'OK' && response.data.username !== undefined) {
                     vueInstance.$message.success('Welcome, ' + response.data.username);
