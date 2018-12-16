@@ -1,3 +1,3 @@
-# minBlog_Client
+# StarWar_Client
 
-The client side for minBlog, which is based on  Vue-Element
+The client side for SWAPI(Star Wars API), which is based on  Vue, Element ui and axios
