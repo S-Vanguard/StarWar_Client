@@ -77,7 +77,7 @@ let api = new Vue({
         },
         logout: function() {
             let vueInstance = this;
-            axios.get('/user/logout')
+            axios.post('/user/logout')
                 .then(function(response) {
                     if (response.status != 200) {
                         vueInstance.$message.error('Incorrect status, please try again');
