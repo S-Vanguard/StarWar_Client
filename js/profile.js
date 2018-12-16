@@ -12,7 +12,7 @@ let profile = new Vue({
         },
         isMailChanged: false,
     },
-    created: function() {
+    mounted: function() {
         let vueInstance = this;
         axios.get('/user/get')
         .then(function(res) {
