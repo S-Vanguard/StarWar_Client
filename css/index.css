@@ -22,21 +22,50 @@
     padding-bottom: 0;
 }
 
+.el-form-item * {
+    max-height: 40px;
+}
+
+.el-form-item{
+    max-height: 40px;
+    margin-bottom: 22px;
+    opacity: 1;
+}
+
 .slide-fade-enter-active{
-    -webkit-transition: all .2s ease !important;
-    transition: all .2s ease !important;
+    -webkit-transition: all 1s ease !important;
+    transition: all 1s ease !important;
+}
+
+.slide-fade-enter-active *{
+    -webkit-transition: all 1s ease !important;
+    transition: all 1s ease !important;
 }
 
 .slide-fade-leave-active{
-    -webkit-transition: all .2s ease !important;
-    transition: all .2s ease !important;
+    -webkit-transition: all 1s ease !important;
+    transition: all 1s ease !important;
 }
+
+.slide-fade-leave-active *{
+    -webkit-transition: all 1s ease !important;
+    transition: all 1s ease !important;
+}
+
 .slide-fade-enter, .slide-fade-leave-to
     /* .slide-fade-leave-active for below version 2.1.8 */ {
-    transform: scaleY(0) !important;
-    margin: 0 !important;
+    /* transform: scaleY(0) !important;
+    margin: 0 !important; */
     max-height: 0;
-    background-color: black;
+    margin-bottom: 0;
+    opacity: 0;
+}
+
+.slide-fade-enter *, .slide-fade-leave-to *
+    /* .slide-fade-leave-active for below version 2.1.8 */ {
+    /* transform: scaleY(0) !important;
+    margin: 0 !important; */
+    max-height: 0;
 }
 
 .el-button {
