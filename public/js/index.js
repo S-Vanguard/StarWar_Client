@@ -99,4 +99,26 @@ let main = new Vue({
         }
     },
     computed: {},
+    beforeCreate: function () {
+        let vueInstance = this;
+        axios.get('/user/get')
+            .then(function (response) {
+                if (response.data.status === 'OK' && response.data.username !== undefined) {
+                    window.location.href = "/html/swapi.html";
+                }
+                else if (response.data.status !== "Failed" || response.data.message !== undefined) {
+                    vueInstance.$message.warning('Caution, the service might be unstable.');
+                }
+            })
+            .catch(function (error) {
+                if (error.response) {
+                    vueInstance.$message.error('Connection failed: ' + error.response.statusText);
+                }
+                else {
+                    vueInstance.$message.error('Connection failed: Unknown error');
+                }
+                vueInstance.username = '';
+                console.log(error)
+            });
+    }
 });
