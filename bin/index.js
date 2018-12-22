@@ -57,4 +57,4 @@ const proxyOptions = {
 app.use(proxy(proxyOptions));
 
 app.listen(Number(listenPort));
-console.log('Koa2 server now listening at http://localhost:3000');
+console.log('Koa2 server now listening at http://localhost:' + listenPort);
