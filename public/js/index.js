@@ -106,7 +106,7 @@ let main = new Vue({
                 if (response.data.status === 'OK' && response.data.username !== undefined) {
                     window.location.href = "/public/html/swapi.html";
                 }
-                else if (response.data.status !== "Failed" || response.data.message !== undefined) {
+                else if (response.data.status !== "Failed" || response.data.message === undefined) {
                     vueInstance.$message.warning('Caution, the service might be unstable.');
                 }
             })

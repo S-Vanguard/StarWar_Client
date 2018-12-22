@@ -10,4 +10,4 @@ RUN npm install
 
 EXPOSE 8888
 # CMD [ "npm", "start" ]
-CMD ["node", "bin/index.js", "8888", "localhost:8000"]
+CMD ["node", "bin/index.js", "8888", "http://192.168.134.129:8080"]
