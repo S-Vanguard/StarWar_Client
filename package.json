@@ -7,7 +7,7 @@
     "doc": "doc"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/S-Vanguard/StarWar_Client#readme",
   "dependencies": {
-    "koa2": "^2.0.0-alpha.7"
+    "koa-router": "^7.4.0",
+    "koa2": "^2.0.0-alpha.7",
+    "koa2-proxy-middleware": "0.0.4",
+    "koa2-static-middleware": "^1.0.3"
   }
 }

@@ -55,7 +55,7 @@ let main = new Vue({
                     if (response.data.status === "OK") {
                         vueInstance.$message.success("Signed in successfully");
                         setTimeout(()=>{
-                            window.location.href = "/html/swapi.html";
+                            window.location.href = "/public/html/swapi.html";
                         }, 3000)
                     } else {
                         if (response.data.message !== undefined) {
@@ -80,7 +80,7 @@ let main = new Vue({
             this.isSignUp = !this.isSignUp;
         },
         toVisitor: function() {
-            window.location.href = '/html/swapi.html';
+            window.location.href = '/public/html/swapi.html';
         },
         check: function() {
             if (this.form.username === "") {
@@ -104,7 +104,7 @@ let main = new Vue({
         axios.get('/user/get')
             .then(function (response) {
                 if (response.data.status === 'OK' && response.data.username !== undefined) {
-                    window.location.href = "/html/swapi.html";
+                    window.location.href = "/public/html/swapi.html";
                 }
                 else if (response.data.status !== "Failed" || response.data.message !== undefined) {
                     vueInstance.$message.warning('Caution, the service might be unstable.');
